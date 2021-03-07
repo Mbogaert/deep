@@ -4,6 +4,7 @@ import Auth from "../utils/auth";
 
 import ThoughtList from "../components/ThoughtList";
 import FriendList from "../components/FriendList";
+import ThoughtForm from "../components/ThoughtForm";
 
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
@@ -28,14 +29,14 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  if (!user?.username) {
-    return (
-      <h4>
-        You need to be logged in to see this page. Use the navigation links
-        above to sign up or log in!
-      </h4>
-    );
-  }
+  // if (!user?.username) {
+  //   return (
+  //     <h4>
+  //       You need to be logged in to see this page. Use the navigation links
+  //       above to sign up or log in!
+  //     </h4>
+  //   );
+  // }
 
   const handleClick = async () => {
     try {
@@ -77,6 +78,7 @@ const Profile = () => {
           />
         </div>
       </div>
+      <div className="mb-3">{!userParam && <ThoughtForm />}</div>
     </div>
   );
 };
